@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{C045DE95-76B1-4F75-A389-2DB04E1F9FAF}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		global.json = global.json
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpPoint", "Src\HelpPoint\HelpPoint.csproj", "{9424E294-9B75-4BF3-884A-0F504998A03C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9424E294-9B75-4BF3-884A-0F504998A03C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9424E294-9B75-4BF3-884A-0F504998A03C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9424E294-9B75-4BF3-884A-0F504998A03C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9424E294-9B75-4BF3-884A-0F504998A03C}.Debug|x64.Build.0 = Debug|Any CPU
+		{9424E294-9B75-4BF3-884A-0F504998A03C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9424E294-9B75-4BF3-884A-0F504998A03C}.Debug|x86.Build.0 = Debug|Any CPU
+		{9424E294-9B75-4BF3-884A-0F504998A03C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9424E294-9B75-4BF3-884A-0F504998A03C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9424E294-9B75-4BF3-884A-0F504998A03C}.Release|x64.ActiveCfg = Release|Any CPU
+		{9424E294-9B75-4BF3-884A-0F504998A03C}.Release|x64.Build.0 = Release|Any CPU
+		{9424E294-9B75-4BF3-884A-0F504998A03C}.Release|x86.ActiveCfg = Release|Any CPU
+		{9424E294-9B75-4BF3-884A-0F504998A03C}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9424E294-9B75-4BF3-884A-0F504998A03C} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+	EndGlobalSection
+EndGlobal

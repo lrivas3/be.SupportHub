@@ -1,6 +1,62 @@
-﻿services:
-  supporthub.api:
-    image: supporthub.api
-    build:
-      context: .
-      dockerfile: SupportHub.Api/Dockerfile
+version: '3.8'
+
+networks:
+  helppointnet:
+    driver: bridge
+
+services:
+  # ------------------------
+  # Reverse proxy (Nginx Proxy Manager)
+  # ------------------------
+  npm:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+    ports:
+      - "80:80"     # HTTP proxy
+      - "443:443"   # HTTPS proxy
+      - "81:81"     # GUI web de NPM
+    volumes:
+      - ./npm/data:/data
+      - ./npm/letsencrypt:/etc/letsencrypt
+    networks:
+      - helppointnet
+
+  # ------------------------
+  # Backend HelpPoint
+  # ------------------------
+  backendhelppoint:
+    image: ialeonardorivas/be.helppoint:latest
+    container_name: backendhelppoint
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=${DEFAULT_CONNECTION}
+      - Jwt__Issuer=${JWT_ISSUER}
+      - Jwt__Audience=${JWT_AUDIENCE}
+      - Jwt__SecretKey=${JWT_SECRETKEY}
+      - Recaptcha__SecretKey=${RECAPTCHA_SECRETKEY}
+      - Email__Host=${EMAIL_HOST}
+      - Email__Port=${EMAIL_PORT}
+      - Email__UserName=${EMAIL_USERNAME}
+      - Email__Password=${EMAIL_PASSWORD}
+      - Email__TimeOut=${EMAIL_TIMEOUT}
+    networks:
+      - helppointnet
+
+  # ------------------------
+  # Frontend HelpPoint
+  # ------------------------
+  frontend:
+    image: ialeonardorivas/fe.helppoint:v1.0.0
+    container_name: fe.helppoint
+    restart: unless-stopped
+    environment:
+      - API_URL=/api
+    depends_on:
+      - backendhelppoint
+    networks:
+      - helppointnet
+
